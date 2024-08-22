@@ -15,6 +15,7 @@ interface TAuthContext {
   fullName: string | null;
   login: (fullName: string) => void;
   logout: () => void;
+  isLoading: boolean;
 }
 
 const AuthContext = createContext<TAuthContext | undefined>(undefined);
@@ -28,20 +29,21 @@ export const useAuth = (): TAuthContext => {
 };
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const storedAuth = localStorage.getItem("auth");
-
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!storedAuth);
-  const [fullName, setFullName] = useState<string | null>(
-    storedAuth ? JSON.parse(storedAuth).fullName : null
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [fullName, setFullName] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    const storedAuth = localStorage.getItem("auth");
     if (storedAuth) {
       const { fullName } = JSON.parse(storedAuth) as AuthData;
       setIsLoggedIn(true);
       setFullName(fullName);
     }
-  }, [storedAuth]);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   const login = (fullName: string) => {
     setIsLoggedIn(true);
@@ -56,7 +58,9 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, fullName, login, logout }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, fullName, login, logout, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );

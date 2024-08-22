@@ -54,9 +54,9 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center relative">
+    <div className="h-full w-full flex flex-col items-center justify-center relative">
       <div className="w-full max-w-[342px] xs:w-[340px] flex flex-col items-center">
-        <div className="absolute xs:top-0 xs:left-4 top-4 left-0">
+        <div className="absolute top-0 left-0">
           <ShippexIcon />
         </div>
 
