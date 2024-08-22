@@ -8,6 +8,8 @@ import {
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Tracking from "./pages/Tracking";
+import AuthProvider from "./context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 function ErrorBoundary() {
   return (
@@ -25,12 +27,19 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       {
         element: <ProtectedRoute />,
-        children: [{ path: "tracking", element: <Tracking /> }],
+        children: [{ path: "app", element: <Tracking /> }],
       },
     ],
   },
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <div className="mx-auto max-w-full px-4 sm:p-6 md:p-8 md:py-12 lg:max-w-7xl">
+        <RouterProvider router={router} />
+      </div>
+      <Toaster />
+    </AuthProvider>
+  );
 }
