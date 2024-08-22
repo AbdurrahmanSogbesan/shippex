@@ -5,21 +5,27 @@ import {
   Outlet,
   Navigate,
 } from "react-router-dom";
-import PrivateRoutes from "./components/PrivateRoutes";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./pages/Login";
+import Tracking from "./pages/Tracking";
+
+function ErrorBoundary() {
+  return (
+    <div className="text-2xl text-red-700">Oops! Something went wrong.</div>
+  );
+}
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Outlet />,
+    errorElement: <ErrorBoundary />,
     children: [
       { index: true, element: <Navigate to="/login" replace /> },
       { path: "login", element: <Login /> },
       {
-        element: <PrivateRoutes />,
-        children: [
-          { path: "users", element: <Users /> },
-          { path: "products", element: <Products /> },
-        ],
+        element: <ProtectedRoute />,
+        children: [{ path: "tracking", element: <Tracking /> }],
       },
     ],
   },
@@ -27,20 +33,4 @@ const router = createBrowserRouter([
 
 export default function App() {
   return <RouterProvider router={router} />;
-}
-
-function Root() {
-  return <Outlet />;
-}
-
-function Users() {
-  return <div>Users</div>;
-}
-
-function Login() {
-  return <div>Login</div>;
-}
-
-function Products() {
-  return <div>Products</div>;
 }
