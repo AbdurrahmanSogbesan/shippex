@@ -10,12 +10,8 @@ import Login from "./pages/Login";
 import Tracking from "./pages/Tracking";
 import AuthProvider from "./context/AuthContext";
 import { Toaster } from "react-hot-toast";
-
-function ErrorBoundary() {
-  return (
-    <div className="text-2xl text-red-700">Oops! Something went wrong.</div>
-  );
-}
+import NotFound from "./pages/NotFound";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +23,10 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       {
         element: <ProtectedRoute />,
-        children: [{ path: "app", element: <Tracking /> }],
+        children: [
+          { path: "app", element: <Tracking /> },
+          { path: "*", element: <NotFound /> },
+        ],
       },
     ],
   },

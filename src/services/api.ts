@@ -20,11 +20,10 @@ export const login = async (username: string, password: string) => {
       full_name: string;
     };
   } catch (error: any) {
-    throw new Error(error.message || "Login failed");
+    throw new Error(error?.response?.data?.message || "Failed to login");
   }
 };
 
-// Fetch Shipment by Tracking Number
 export const getShipmentByTrackingNumber = async (trackingNumber: string) => {
   const payload = {
     doctype: "AWB",

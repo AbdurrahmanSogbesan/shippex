@@ -34,17 +34,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={clsx(className, "flex flex-col gap-[6px]")}>
-        <div className="flex justify-between items-center mb-1">
-          {label && (
+        {label && (
+          <div className="flex justify-between items-center mb-1">
             <label
               htmlFor={id || name}
               className="text-[14px] font-semibold text-[#1F2937]"
             >
               {label}
             </label>
-          )}
-          {helperContent && <div>{helperContent}</div>}
-        </div>
+            {helperContent && <div>{helperContent}</div>}
+          </div>
+        )}
 
         <div className="relative">
           {leftIcon && (

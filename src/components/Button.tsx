@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           "cursor-pointer disabled:cursor-default",
           "font-semibold relative h-[46px]",
           "bg-[#2563EB] text-white text-[15px] hover:shadow-[0_0_0_4px_rgba(37,99,235,0.2)] disabled:bg-[#60A5FA] disabled:cursor-not-allowed disabled:hover:shadow-none",
-          "py-[14px]",
+          "py-[14px] px-6",
           {
             "w-full": customWidth === "full",
             "w-fit": !customWidth,

@@ -40,9 +40,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       setIsLoggedIn(true);
       setFullName(fullName);
     }
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    setIsLoading(false);
   }, []);
 
   const login = (fullName: string) => {
