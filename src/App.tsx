@@ -35,7 +35,7 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <AuthProvider>
-      <div className="mx-auto max-w-full p-4 sm:p-6 md:p-12 lg:max-w-7xl h-screen">
+      <div className="mx-auto max-w-full p-4 sm:p-6 md:p-12 lg:max-w-7xl h-full md:h-screen">
         <RouterProvider router={router} />
       </div>
       <Toaster />
