@@ -45,7 +45,7 @@ In the project directory, you can run:
 
 ## Features
 
-- User authentication ()
+- User authentication
 - Shipment tracking
 - Responsive design
 
