@@ -3,7 +3,7 @@ import Search from "./Search";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full animate-fadeIn">
       <Search />
       {children}
     </div>

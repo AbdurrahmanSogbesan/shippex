@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center relative">
+    <div className="h-full w-full flex flex-col items-center justify-center relative animate-fadeIn">
       <div className="absolute top-0 left-0">
         <ShippexIcon />
       </div>
