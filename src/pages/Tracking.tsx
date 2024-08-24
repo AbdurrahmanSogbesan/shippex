@@ -16,6 +16,7 @@ import { useSearch } from "../context/SearchContext";
 import { Link, useLocation } from "react-router-dom";
 import { Shipment } from "../types";
 import NotFoundIcon from "../assets/icons/notfound.svg";
+import PullToRefresh from "react-simple-pull-to-refresh";
 
 const iconStyles = {
   shippingDetail: { size: 16, color: "#6B7280" },
@@ -103,42 +104,48 @@ const Tracking = () => {
   const searchParams = new URLSearchParams(location.search);
   const hasTrackingIdInUrl = searchParams.has("trackingId");
 
+  const onRefresh = async () => {
+    window.location.reload();
+  };
+
   return (
-    <MainLayout>
-      {currentShipment ? (
-        <div className="flex mt-6 gap-8 flex-col md:flex-row md:gap-0 md:justify-between h-fit">
-          <ShipmentDetails shipment={currentShipment} />
-          <TimelineSection shipment={currentShipment} />
-        </div>
-      ) : (
-        <div className="items-center mt-[30%] md:h-[85%] md:mt-0 flex flex-col justify-center">
-          {hasTrackingIdInUrl ? (
-            <>
-              <NotFoundIcon />
-              <p className="mt-10 font-bold text-[24px] mb-2">
-                No results found
-              </p>
-              <p className="text-[#838282] mb-6">
-                No results found. Please try again.
-              </p>
-              <Link
-                to="/app"
-                className="text-[#2563EB] text-[15px] hover:underline py-2 sm:py-[14px] font-semibold"
-              >
-                Retry
-              </Link>
-            </>
-          ) : (
-            <>
-              <EmptyIcon />
-              <p className="text-[#6B7280] mt-10">
-                Enter a valid AWB ID to display details
-              </p>
-            </>
-          )}
-        </div>
-      )}
-    </MainLayout>
+    <PullToRefresh onRefresh={onRefresh}>
+      <MainLayout>
+        {currentShipment ? (
+          <div className="flex mt-6 gap-8 flex-col md:flex-row md:gap-0 md:justify-between h-fit">
+            <ShipmentDetails shipment={currentShipment} />
+            <TimelineSection shipment={currentShipment} />
+          </div>
+        ) : (
+          <div className="items-center mt-[30%] md:h-[85%] md:mt-0 flex flex-col justify-center">
+            {hasTrackingIdInUrl ? (
+              <>
+                <NotFoundIcon />
+                <p className="mt-10 font-bold text-[24px] mb-2">
+                  No results found
+                </p>
+                <p className="text-[#838282] mb-6">
+                  No results found. Please try again.
+                </p>
+                <Link
+                  to="/app"
+                  className="text-[#2563EB] text-[15px] hover:underline py-2 sm:py-[14px] font-semibold"
+                >
+                  Retry
+                </Link>
+              </>
+            ) : (
+              <>
+                <EmptyIcon />
+                <p className="text-[#6B7280] mt-10">
+                  Enter a valid AWB ID to display details
+                </p>
+              </>
+            )}
+          </div>
+        )}
+      </MainLayout>
+    </PullToRefresh>
   );
 };
 
