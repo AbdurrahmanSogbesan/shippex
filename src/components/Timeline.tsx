@@ -5,7 +5,7 @@ import { Timeline as TimelineType } from "../types";
 const ShipmentTimeline = ({ data }: { data: TimelineType[] }) => {
   return (
     <Timeline align="left" endless>
-      {data.map((item: any, index: number) => (
+      {data.map((item, index) => (
         <Timeline.Item
           key={index}
           dot={
