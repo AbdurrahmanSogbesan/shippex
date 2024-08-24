@@ -11,6 +11,7 @@ import { login } from "../services/api";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { handleRememberMe } from "../utils";
+import { SignupForm } from "../types";
 
 const Login = () => {
   const auth = useAuth();
@@ -55,11 +56,10 @@ const Login = () => {
 
   return (
     <div className="h-full w-full flex flex-col items-center justify-center relative">
-      <div className="w-full max-w-[342px] xs:w-[340px] flex flex-col items-center">
-        <div className="absolute top-0 left-0">
-          <ShippexIcon />
-        </div>
-
+      <div className="absolute top-0 left-0">
+        <ShippexIcon />
+      </div>
+      <div className="w-full max-w-[342px] xs:w-[340px] flex flex-col items-center mt-40 md:mt-0">
         <p className="text-[24px] font-bold mb-2">Sign in</p>
         <div className="flex items-center gap-x-2 mb-4">
           <p className="text-[14px] text-[#4B5563]">
@@ -101,7 +101,7 @@ const Login = () => {
             label="Remember me"
             checked={rememberMe}
             onChange={() => setRememberMe(!rememberMe)}
-            className="mb-2"
+            className="mb-2 w-fit"
           />
           <Button
             type="submit"

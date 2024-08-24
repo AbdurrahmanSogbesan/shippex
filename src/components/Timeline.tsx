@@ -1,7 +1,8 @@
 import { Timeline } from "rsuite";
 import Avatar from "../assets/icons/avatar10.svg";
+import { Timeline as TimelineType } from "../types";
 
-const CustomTimeline = ({ data }: { data: any }) => {
+const ShipmentTimeline = ({ data }: { data: TimelineType[] }) => {
   return (
     <Timeline align="left" endless>
       {data.map((item: any, index: number) => (
@@ -38,4 +39,4 @@ const CustomTimeline = ({ data }: { data: any }) => {
   );
 };
 
-export default CustomTimeline;
+export default ShipmentTimeline;

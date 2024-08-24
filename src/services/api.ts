@@ -2,11 +2,6 @@ import axios from "axios";
 
 const API_BASE_URL = "https://shippex-demo.bc.brandimic.com/api/method";
 
-// interface ApiResponse<Result> {
-//   data: Result;
-// }
-
-// Login
 export const login = async (username: string, password: string) => {
   const formData = new FormData();
   formData.append("usr", username);

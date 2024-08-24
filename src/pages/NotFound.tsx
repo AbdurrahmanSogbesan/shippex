@@ -6,7 +6,7 @@ import MainLayout from "../components/MainLayout";
 const NotFound: React.FC = () => {
   return (
     <MainLayout>
-      <div className="items-center h-[85%] flex justify-center flex-col">
+      <div className="items-center mt-[30%] md:h-[85%] md:mt-0 flex flex-col justify-center">
         <NotFoundIcon />
         <p className="text-[24px] font-bold mt-10 mb-2">404</p>
         <p className="mb-2 sm:mb-6 text-[14px] text-[#838282]">

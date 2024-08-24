@@ -12,6 +12,7 @@ import AuthProvider from "./context/AuthContext";
 import { Toaster } from "react-hot-toast";
 import NotFound from "./pages/NotFound";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { SearchProvider } from "./context/SearchContext";
 
 const router = createBrowserRouter([
   {
@@ -35,10 +36,12 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <AuthProvider>
-      <div className="mx-auto max-w-full p-4 sm:p-6 md:p-12 lg:max-w-7xl h-full md:h-screen">
-        <RouterProvider router={router} />
-      </div>
-      <Toaster />
+      <SearchProvider>
+        <div className="mx-auto max-w-full p-4 sm:p-6 md:p-12 lg:max-w-7xl h-full md:h-screen">
+          <RouterProvider router={router} />
+        </div>
+        <Toaster />
+      </SearchProvider>
     </AuthProvider>
   );
 }

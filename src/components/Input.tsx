@@ -51,7 +51,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <div
               className={clsx(
                 "absolute left-4 -translate-y-1/2",
-                errorText ? "top-[33%]" : "top-1/2"
+                errorText ? "top-[30%]" : "top-1/2"
               )}
             >
               {leftIcon}
@@ -74,7 +74,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
 
           {errorText && !disabled && (
-            <p className="text-[#EF4444] text-[13px] mt-1">{errorText}</p>
+            <p className="text-[#EF4444] text-[14px] mt-[10px]">{errorText}</p>
           )}
 
           {hideable && (
