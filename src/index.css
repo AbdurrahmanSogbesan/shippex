@@ -22,11 +22,11 @@
 }
 
 .rs-timeline-with-time .rs-timeline-item-dot {
-  left: calc(31% - 12px) !important;
+  left: 100px !important;
 }
 
 .rs-timeline-with-time .rs-timeline-item-tail {
-  left: calc(31% - 1px);
+  left: 113px !important;
 }
 
 .rs-timeline-item-tail {
